@@ -4,10 +4,14 @@ import getMovies from "./services/API.services";
 import MovieCardList from "./components/MovieCardList";
 
 function App() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    getMovies();
+    console.log("use effect running")
+    getMovies().then((jsonData) => {
+      console.log("use effect" + jsonData)
+      setData(jsonData);
+    })
   }, []);
 
   return (
