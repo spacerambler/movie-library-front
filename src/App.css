@@ -34,6 +34,12 @@ header {
     background-color: var(--secondary-color);
 }
 
+h3 {
+    opacity: 0.5;
+    letter-spacing: 2px;
+    margin-left: 1rem;
+}
+
 button {
     background-color: var(--green);
     color: #000000;

@@ -4,6 +4,7 @@ import React from "react";
 function Form({ submitHandler }) {
   return (
     <div className="container">
+        <h3>Login to see your movie library</h3>
     <form className="form login-form" onSubmit={submitHandler}>
         <div className="form-group">
             <label htmlFor="email-login">Email:</label>
