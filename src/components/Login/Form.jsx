@@ -3,6 +3,7 @@ import React from "react";
 
 function Form({ submitHandler }) {
   return (
+    <div className="container">
     <form className="form login-form" onSubmit={submitHandler}>
         <div className="form-group">
             <label htmlFor="email-login">Email:</label>
@@ -13,9 +14,10 @@ function Form({ submitHandler }) {
             <input className="form-input" type="password" id="password-login" />
         </div>
         <div className="form-group">
-            <button className="btn btn-primary" type="submit">Login</button>
+            <button type="submit">Login</button>
         </div>
     </form>
+    </div>
   );
 }
 
