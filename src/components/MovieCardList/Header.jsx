@@ -2,7 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function Header({ title }) {
-  return <h2>{title}</h2>;
+  return (
+    <div className="movie-info">
+    <h3>{title}</h3>
+</div>
+  )
 }
 
 Header.propTypes = {
