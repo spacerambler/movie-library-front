@@ -18,6 +18,7 @@ function Form({ submitHandler }) {
             <button type="submit">Login</button>
         </div>
     </form>
+    <a href="/signup">Sign Up</a>
     </div>
   );
 }
