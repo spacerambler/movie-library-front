@@ -8,6 +8,10 @@ import HomeView from "./pages/Movies";
 import getMovies from "./services/API.services";
 import MovieCardList from "./components/MovieCardList";
 
+// const client = new ApolloClient({
+//   url: "http://localhost:4000/graphql",
+// });
+
 function App() {
   const [data, setData] = useState([]);
 

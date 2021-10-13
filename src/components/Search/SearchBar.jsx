@@ -2,18 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function SearchBar() {
-  return (
-<header>
-<form id="form">
-    <input type="text" id="search" className="search" placeholder= "Search" />
-</form>
-</header>
-  )
-}
+    return (
+    <form className="search">
+        <input
+          value={searchValue}
+          onChange={handleSearchInputChanges}
+          type="text"
+        />
+        <input onClick={callSearchFunction} type="submit" value="SEARCH" />
+        </form>
+    )
+  };
 
-SearchBar.propTypes = {
-  title: PropTypes.string.isRequired,
-};
+  SearchBar.propTypes = {
+      searchValue: PropTypes.string.isRequired, 
+  }
 
 export default SearchBar;
 
