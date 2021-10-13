@@ -1,23 +1,34 @@
-import React, { useState, useEffect } from "react";
+// import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import AuthContext from "./context/AuthContext";
+// import UserService from "./services/User"
+
 import "./App.css";
-import getMovies from "./services/API.services";
-import MovieCardList from "./components/MovieCardList";
+import HomeView from "./pages/HomeView";
+
+// const client = new ApolloClient({
+//   uri: "http://localhost:4000/graphql",
+// });
 
 function App() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    console.log("use effect running")
-    getMovies().then((jsonData) => {
-      console.log("use effect" + jsonData)
-      setData(jsonData);
-    })
-  }, []);
 
   return (
-    <main>
-      <MovieCardList movies={data} />
-    </main>
+    // <ApolloProvider client={client}>
+      <BrowserRouter>
+        {/* <Switch> */}
+          {/* Provide a way to access and/or set the current user. */}
+          {/* <AuthContext.Provider value={React.useState(UserService.getUser())}>
+            <Route path={["/signup", "/login"]}>
+              <AddUserLoginView />
+            </Route> */}
+            <Route exact path="/">
+              <HomeView />
+            </Route>
+          {/* </AuthContext.Provider>
+        </Switch> */}
+      </BrowserRouter>
+    // </ApolloProvider>
   );
 }
 
