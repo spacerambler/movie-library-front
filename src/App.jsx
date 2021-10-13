@@ -1,5 +1,10 @@
+import { ApolloClient, ApolloProvider } from "@apollo/client";
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import "./App.css";
+import HomeView from "./pages/Movies";
+
 import getMovies from "./services/API.services";
 import MovieCardList from "./components/MovieCardList";
 
@@ -16,7 +21,12 @@ function App() {
 
   return (
     <main>
-      <MovieCardList movies={data} />
+    <Router>
+    {/* <ApolloProvider client={client}> ... not sure how to use this right now yet */}
+      <Route path="/" exact>
+        <HomeView />
+      </Route>
+    </Router>
     </main>
   );
 }

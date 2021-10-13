@@ -1,7 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import AuthContext from "../../context/AuthContext";
 import React from "react";
-import { Link } from "react-router-dom";
+import MovieCardList from "../../components/MovieCardList"
 
 // queries 
 const GET_MOVIES = gql`
@@ -20,13 +20,15 @@ function HomeView() {
     const [isLoggedIn, setIsLoggedIn] = React.useContext(AuthContext);
     const [movieUpdate] = React.useContext(MovieUpdateContext);
 
-    const { data } = useQuery();
+    const { data } = useQuery(GET_MOVIES);
 
     const handleClick = () => {}
 
     return (
         <>
-
+    <main>
+        <MovieCardList movies={data} />
+    </main>
         </>
     );
 }
