@@ -4,14 +4,17 @@ import React, { useState, useEffect } from "react";
 import MovieCardList from "../components/MovieCardList"
 import Header from "../components/Header"
 
-import getMovies from "./services/API.services";
+import getMovies from "../services/API.services";
+// import searchMovies from "../services/API.search";
 
 
 function HomeView() {
+    const [data, setData] = useState([]);
 
     // const [isLoggedIn, setIsLoggedIn] = React.useContext(AuthContext);
-
-    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    
+    const [errorMessage, setErrorMessage] = useState(null);
 
     React.useEffect(() => {
     //   console.log("use effect running")
@@ -21,11 +24,15 @@ function HomeView() {
       })
     }, []);
 
-    const handleClick = () => {}
+    // add in search api here? 
+    const search = (value) => {
+        setData(value);
+    }
+    
 
     return (
         <>
-        <Header />
+        <Header search={search} />
         <main>
         <MovieCardList movies={data} />
         </main>
