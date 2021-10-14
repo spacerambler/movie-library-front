@@ -1,20 +1,23 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-// import PropTypes from "prop-types";
+// Here we need to import propTypes
+import propTypes from "prop-types";
 
-const Header = (props) => {
-console.log(props.search)
-    return (
-        <header>
-        <h1>Movie Library</h1>
-        <SearchBar setSearch={props.setData} />
-        <a className="btn" href="/login">Login</a>
-        </header>
-    )
+function Header(props) {
+  console.log(props);
+  return (
+    <header>
+      <h1>Movie Library</h1>
+      <SearchBar setData={props.setData} />
+      <a className="btn" href="/login">
+        Login
+      </a>
+    </header>
+  );
 }
 
-// Header.PropTypes = {
-//     setData: PropTypes.setData.isRequired
-// }
+Header.propTypes = {
+  setData: propTypes.setData,
+};
 
 export default Header;
