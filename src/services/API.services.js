@@ -3,7 +3,7 @@ const BASE_URL = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity
 const getMovies = async () => {
     const response = await fetch(BASE_URL)
     const jsonData = await response.json();
-    console.log("api services", jsonData)
+    // console.log("api services", jsonData)
     return jsonData.results;
 };
 

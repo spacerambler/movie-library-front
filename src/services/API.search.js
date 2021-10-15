@@ -5,7 +5,7 @@ const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=b0626c910c
 const searchMovies = async (search) => {
     const res = await fetch(`${SEARCH_API}${search}`)
     const searchData = await res.json();
-    console.log("search", searchData)
+    // console.log("search", searchData)
     return searchData.results;
 };
 
