@@ -32,7 +32,20 @@ function AddUserLoginView() {
         }
     })
 
-    const handleSubmit = (e) => {};
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        switch(location.pathname) {
+            case "/signup": 
+            addUser({variables: Object.fromEntries(new FormData(e.target))});
+            break;
+            case "/login": 
+            login({variables: Object.fromEntries(new FormData(e.target))})
+            break;
+            default: 
+            break;
+        }
+    };
 
     return ();
 }
