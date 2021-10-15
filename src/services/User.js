@@ -1,5 +1,3 @@
-// Tyler -- review and make edits as needed to match server side
-
 import decode from "jwt-decode";
 
 const UserService = {
