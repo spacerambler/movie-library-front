@@ -1,10 +1,9 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-// Here we need to import propTypes
 import propTypes from "prop-types";
 
 function Header(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <header>
       <h1>Movie Library</h1>

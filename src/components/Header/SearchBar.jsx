@@ -4,7 +4,7 @@ import searchMovies from "../../services/API.search";
 
 const SearchBar = (props) => {
   const [searchValue, setSearchValue] = useState("");
-  console.log("search bar", props);
+  // console.log("search bar", props);
   const handleSearchInputChanges = (e) => {
     setSearchValue(e.target.value);
   };
@@ -16,7 +16,7 @@ const SearchBar = (props) => {
   const callSearchFunction = async (e) => {
     e.preventDefault();
     const searchValues = await searchMovies(searchValue);
-    console.log(searchValues);
+    // console.log(searchValues);
     props.setData(searchValues);
     resetInputField();
   };

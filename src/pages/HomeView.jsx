@@ -1,6 +1,6 @@
-import { gql, useQuery } from "@apollo/client";
-import AuthContext from "../context/AuthContext";
-import React, { useState, useEffect } from "react";
+// import { gql, useQuery } from "@apollo/client";
+// import AuthContext from "../context/AuthContext";
+import React, { useState } from "react";
 import MovieCardList from "../components/MovieCardList";
 import Header from "../components/Header";
 
