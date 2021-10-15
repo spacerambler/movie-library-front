@@ -47,7 +47,11 @@ function AddUserLoginView() {
         }
     };
 
-    return ();
+    return (
+        <>
+            TESTING
+      </>
+    );
 }
 
 export default AddUserLoginView;
