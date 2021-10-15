@@ -14,6 +14,7 @@ import UserService from "./services/User"
 import "./App.css";
 import HomeView from "./pages/HomeView";
 import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -53,9 +54,9 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
           <AuthContext.Provider value={React.useState(UserService.getUser())}>
-            {/* <Route path="/signup">
-              <AddUserLoginView />
-            </Route>  */}
+            <Route path="/signup">
+              <Signup />
+            </Route> 
             <Route path="/login">
               <Login />
             </Route> 
