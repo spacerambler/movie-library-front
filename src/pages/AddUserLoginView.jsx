@@ -1,7 +1,7 @@
 import { useMutation } from "@apollo/client";
 import UserContext from "../context/UserContext";
 import UserService from "../services/User";
-import { ADD_USER, LOGIN } from "@app/utils/graphql/mutations";
+import { ADD_USER, LOGIN } from "../utils/graphql/";
 import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -17,6 +17,7 @@ function AddUserLoginView() {
         }
     })
 
+        // mutations from schema addUser , login
     const [addUser, { error: addUserError }] = useMutation(ADD_USER, {
         onCompleted: ({ addUser: { token, user }}) => {
             UserService.login(token);
@@ -24,7 +25,12 @@ function AddUserLoginView() {
         }
     });
 
-    // mutations from schema addUser 
+    const [login, { error: loginError }] = useMutation(LOGIN, {
+        onCompleted: ({ login: { token, user }}) => {
+            UserService.login(token);
+            setUser(user);
+        }
+    })
 
     const handleSubmit = (e) => {};
 
