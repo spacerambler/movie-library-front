@@ -1,16 +1,24 @@
-// import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 // import config from "./utils/config"
-// import AuthContext from "./context/AuthContext";
-// import UserService from "./services/User"
-// import { jsxDEV as _jsxDEV } from "react/jsx-dev-runtime";
+import AuthContext from "./context/AuthContext";
+import UserService from "./services/User"
 
 import "./App.css";
 import HomeView from "./pages/HomeView";
+import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
 
-// const client = new ApolloClient({
-//   uri:
+// Construct our main GraphQL API endpoint
+// const httpLink = createHttpLink({
+//   uri: 
 //     import.meta.env.NODE_ENV === "development"
 //       ? "http://localhost:4000/graphql"
 //       : "https://movie-library-wustl-3.herokuapp.com/graphql",
@@ -18,27 +26,62 @@ import HomeView from "./pages/HomeView";
 //   cache: new InMemoryCache(),
 // });
 
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+// const client = new ApolloClient({
+//   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+//   link: authLink.concat(httpLink),
+//   cache: new InMemoryCache(),
+// });
+
+const client = new ApolloClient({
+  request: (operation) => {
+    const token = localStorage.getItem('id_token');
+    // return the headers to the context so httpLink can read them
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    })
+  },
+  uri: process.env.NODE_ENV === "development"
+  ?"http://localhost:4000/graphql" 
+  : "https://movie-library-wustl-3.herokuapp.com/graphql",
+  cache: new InMemoryCache(),
+})
+
 function App() {
   React.useEffect(() => {
     document.title = "Movie Library";
   }, []);
 
   return (
-    // <ApolloProvider client={client}>
-      <BrowserRouter>
-        {/* <Switch> */}
-          {/* Provide a way to access and/or set the current user. */}
-          {/* <AuthContext.Provider value={React.useState(UserService.getUser())}>
-            <Route path={["/signup", "/login"]}>
-              <AddUserLoginView />
-            </Route> */}
+    <ApolloProvider client={client}>
+      <Router>
+          <AuthContext.Provider value={React.useState(UserService.getUser())}>
+            <Route path="/signup">
+              <Signup />
+            </Route> 
+            <Route path="/login">
+              <Login />
+            </Route> 
             <Route exact path="/">
               <HomeView />
             </Route>
-          {/* </AuthContext.Provider>
-        </Switch> */}
-      </BrowserRouter>
-    // </ApolloProvider>
+          </AuthContext.Provider>
+      </Router>
+    </ApolloProvider>
   );
 }
 

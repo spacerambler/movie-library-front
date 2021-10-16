@@ -1,6 +1,8 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import propTypes from "prop-types";
+import { Link, useLocation } from "react-router-dom";
+
 
 function Header(props) {
   // console.log(props);
@@ -8,9 +10,12 @@ function Header(props) {
     <header>
       <h1>Movie Library</h1>
       <SearchBar setData={props.setData} />
-      <a className="btn" href="/login">
+      <Link to="/login" className="btn">
         Login
-      </a>
+      </Link>
+      <Link to="/signup" className="btn">
+        Create Account
+      </Link>
     </header>
   );
 }
