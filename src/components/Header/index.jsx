@@ -13,7 +13,7 @@ function Header(props) {
       <Link to="/login" className="btn">
         Login
       </Link>
-      <Link to="'/signup" className="btn">
+      <Link to="/signup" className="btn">
         Create Account
       </Link>
     </header>

@@ -30,3 +30,7 @@ login(email: $email, password: $password) {
 }
 }
 `;
+
+// export const UPDATE_MOVIE = gql`
+
+// `;
